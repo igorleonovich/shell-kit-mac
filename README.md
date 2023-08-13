@@ -1,4 +1,4 @@
-# Shell kit for macOS
+# Shell Kit (macOS)
 
 ### Usage:
 
