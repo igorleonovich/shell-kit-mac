@@ -59,7 +59,7 @@ permissions-ssh() {
   $SCRIPTS_PATH/common/permissions-ssh-mac.sh
 }
 permissions-scripts() {
-  $SCRIPTS_PATH/common/permissions-scripts-mac.sh
+  $SCRIPTS_PATH/common/permissions-scripts.sh
 }
 
 # MISCELLANEOUS: COMMON: ICLOUD
