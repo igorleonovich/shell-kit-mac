@@ -56,7 +56,7 @@ perms() {
   for file in $(find . -type f -maxdepth 1); do stat -f '%A %N' $file; done
 }
 permissions-ssh() {
-  $SCRIPTS_PATH/common/permissions-ssh-mac.sh
+  sudo $SCRIPTS_PATH/common/permissions-ssh-mac.sh
 }
 permissions-scripts() {
   $SCRIPTS_PATH/common/permissions-scripts.sh
