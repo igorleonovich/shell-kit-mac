@@ -29,6 +29,9 @@ machinename() {
 alias update="brew update && brew upgrade && gem update"
 alias rmdd="rm -rf ~/Library/Developer/Xcode/DerivedData"
 
+# MISCELLANEOUS: COMMON: POWER
+alias s="pmset sleepnow"
+
 # MISCELLANEOUS: COMMON: NETWORKING
 alias ip-local="ipconfig getifaddr en0"
 alias ip-public="dig -4 TXT +short o-o.myaddr.l.google.com @ns1.google.com | sed 's/\"//g'"
