@@ -26,8 +26,14 @@ machinename() {
   sudo scutil --set LocalHostName $1
   sudo scutil --set ComputerName $1
 }
-alias update="brew update && brew upgrade && gem update"
+alias lsa="ls -la"
+cdlsa() {
+  cd $1
+  lsa
+}
+alias cl="cdlsa"
 alias rmdd="rm -rf ~/Library/Developer/Xcode/DerivedData"
+alias update="brew update && brew upgrade && gem update"
 
 # MISCELLANEOUS: COMMON: POWER
 alias s="pmset sleepnow"
@@ -61,6 +67,25 @@ permissions-ssh() {
 permissions-scripts() {
   $SCRIPTS_PATH/common/permissions-scripts.sh
 }
+
+# MISCELLANEOUS: COMMON: DOCKER
+docker-stop-containers() {
+  docker stop $(docker ps -a -q)
+}
+alias ds="docker-stop-containers"
+docker-clean() {
+  docker system prune -a -f
+}
+alias dc="docker-clean"
+docker-nginx-logs-colorful() {
+  docker logs --follow $1 | awk '
+    /" 2/ {print "\033[32m" $0 "\033[39m"; next;}
+    /" 3/ {print "\033[37m" $0 "\033[39m"; next;}
+    /" 4/ {print "\033[33m" $0 "\033[39m"; next;}
+    /" 5/ {print "\033[31m" $0 "\033[39m"}
+  '
+}
+alias dnl="docker-nginx-logs-colorful"
 
 # MISCELLANEOUS: COMMON: ICLOUD
 alias cd-icloud="cd ~/Library/Mobile\ Documents"
