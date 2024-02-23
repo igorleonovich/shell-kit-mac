@@ -39,6 +39,7 @@ alias update="brew update && brew upgrade && gem update"
 alias s="pmset sleepnow"
 
 # MISCELLANEOUS: COMMON: NETWORKING
+alias flushdns="sudo killall -HUP mDNSResponder"
 alias ip-local="ipconfig getifaddr en0"
 alias ip-public="dig -4 TXT +short o-o.myaddr.l.google.com @ns1.google.com | sed 's/\"//g'"
 ip-of-domain() {
@@ -50,8 +51,14 @@ alias ssh-new="eval `ssh-agent -s`"
 ssh-ed25519() {
   ssh-keygen -o -a 100 -t ed25519 -f $1 -C $2
 }
+ssh-rsa4096() {
+  ssh-keygen -b 4096 -o -a 100 -t rsa -f $1 -C $2
+}
 ssh-public() {
   ssh-keygen -y -f $1 > "$1.pub"
+}
+ssh-add-github() {
+  ssh-keyscan github.com >> ~/.ssh/known_hosts
 }
 
 # MISCELLANEOUS: COMMON: PERMISSIONS
@@ -96,6 +103,9 @@ alias dnl="docker-nginx-logs-colorful"
 alias cd-icloud="cd ~/Library/Mobile\ Documents"
 alias cd-icloud-containers="cd ~/Library/Application\ Support/CloudDocs/session/containers"
 alias icloud-reset="killall bird"
+
+# MISCELLANEOUS: COMMON: ENCRYPTION
+alias e-d="$SCRIPTS_PATH/common/encrypt-decrypt.sh"
 
 
 #
